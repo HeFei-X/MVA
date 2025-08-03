@@ -34,7 +34,7 @@ Step 1: Run dpo.py to obtain the helpful vector:
  ```bash
    python dpo.py
 
-Step 2: Run mva.py to obtain the harmless vector, 
+Step 2: Run mva.py to obtain the harmless value vector, 
 and configure the search space for extrapolation to generate multiple model configurations (i.e., vector weights):
    ```bash
    python mva
