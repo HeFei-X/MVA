@@ -38,6 +38,8 @@ def hsic_loss(A1, A2, sigma=Config.HSIC_SIGMA):
 def mutual_info_loss_hsic(model, adapter1="lora1", adapter2="lora2"):
     loss = 0.0
     for name, module in model.named_modules():
+        # This is an approximate implementation for quick debugging and running; it works as well.
+        # The full version requires computing the AB product and will be open-sourced later.
         if hasattr(module, 'lora_A') and isinstance(module.lora_A, torch.nn.ModuleDict):
             if adapter1 not in module.lora_A or adapter2 not in module.lora_A:
                 continue
