@@ -38,8 +38,7 @@ def hsic_loss(A1, A2, sigma=Config.HSIC_SIGMA):
 def mutual_info_loss_hsic(model, adapter1="lora1", adapter2="lora2"):
     loss = 0.0
     for name, module in model.named_modules():
-        # This is an implementation for quick debugging and running; it works as well.
-        if hasattr(module, 'lora_A') and isinstance(module.lora_A, torch.nn.ModuleDict):
+        if hasattr(module, 'lora_A') and isinstance(module.lora_A, torch.nn.ModuleDict):  #        # We use matrix A to approximate the incremental portion of the Base model (value vectors). 
             if adapter1 not in module.lora_A or adapter2 not in module.lora_A:
                 continue
             A1 = module.lora_A[adapter1].weight
